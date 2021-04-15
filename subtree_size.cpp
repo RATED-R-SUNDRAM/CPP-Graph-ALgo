@@ -20,10 +20,6 @@ int dfs(int a){
    }
    subtree[a]=cur_size;
    return cur_size;
-       
-
-       
-   
 }
 
 int main() {

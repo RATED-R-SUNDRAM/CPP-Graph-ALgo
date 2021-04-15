@@ -1,63 +1,45 @@
-#include <bits/stdc++.h> 
-using namespace std; 
+#include <bits/stdc++.h>
+using namespace std;
 
-const int N=1e5;
+const int N=1e5+5;
 vector<int> g[N];
-bool vis[N]={0};
-
-
+bool vis[N];
 
 void dfs(int a){
-    for (auto elm : g[a])
+    for(auto elm : g[a])
     {
-        if(vis[elm]==0){
+        if (!vis[elm])
+        {
             vis[elm]=1;
             dfs(elm);
         }
+        
     }
 }
+
 int main() {
     int n,m;
-    cout<<"enter the value of n: ";
-    cin>>n;
-    cout<<"enter the value of m: ";
-    cin>>m;
-    for (int i = 0; i <m; i++)
+    cin>>n>>m;
+    for (int i=0; i <n; i++)
     {
        int a,b;
        cin>>a>>b;
-
        g[a].push_back(b);
-       g[b].push_back(a);
-
+       g[b].push_back(a);        
     }
-    for (int i = 1; i <=n; i++)
-    {
-        
 
-        cout<<i<<"-->";
-        for(auto var :g[i])
+    for(int i=1;i<=5;i++)
+    {
+        if (!vis[i])
         {
-            cout<<var<<",";
-            
-        }
-        cout<<"\n";
-    }
-    for (int i = 1; i <=n; i++)
-    {
-        if(!vis[i]){
             dfs(i);
         }
+        
     }
-    for (int i = 1; i <=10; i++)
+    for (int i = 0; i < 6; i++)
     {
-        cout<<vis[i]<<" ";
+        cout<<vis[i]<<"\n";
     }
-    
-    
-    
-    
-
 
     return 0;
 }

@@ -2,61 +2,51 @@
 
 using namespace std;
 
-const int N=1e5+5;
-bool vis[N]={0};
-vector<int> g[N];
-int dis[N]={0};
+const int N=3;
+bool vis[3][3];
+// up , right , down , left 
 
-int main() {
-    int t;
-    cin>>t;
-    for (int i = 1; i <=t; i++)
-    {
-        
-    
-    int n,m;
-  
-    cin>>n;
- 
-    cin>>m;
-    for (int i = 1; i <=m; i++)
-    {
-        int a,b;
-        cin>>a>>b;
-        g[a].push_back(b);
-        g[b].push_back(a);
-    }
-    
-    
-    queue<int> q;
-    q.push(1);
-    while (!q.empty())
-    {
-        int node = q.front();
-        
-        vis[node]=1;
-        q.pop();
-        for(auto var :g[node])
-        {
-            
-            if(!vis[var]){
-                dis[var]=dis[node]+1; 
-                vis[var]=1;
-                q.push(var);
-            }
-            
-            
-        }
-    
+int dx[4]={-1,0,1,0};
+int dy[4]={0,1,0,-1};
 
-    }
-    
-    cout<<dis[n]<<"\n";
-    g[N].empty();
-    fill(begin(vis),end(vis), false );
-    fill(begin(dis),end(dis), 0 );
+bool valid(int a,int b){
+	if (a<0 || a>=N || b<0 || b>=N){
+		return false;
+	}
+	else if(vis[a][b]){
 
-    
+	    return false;
+	}
+
+	else
+	{
+		
+		return true;
     }
-    return 0;
+	
 }
+
+void dfs(int a,int b){
+	
+	vis[a][b]=1;
+    cout<<a+1<<" "<<b+1<<"\n";
+
+	for (int i = 0; i <4; i++)
+	{
+	    if (valid(a+dx[i],b+dy[i]))
+		{
+			
+			dfs(a+dx[i],b+dy[i]);
+
+		}
+		
+	}
+
+}
+
+int main(int argc, char const *argv[])
+{
+	dfs(0,0);
+	
+    return 0;
+}	

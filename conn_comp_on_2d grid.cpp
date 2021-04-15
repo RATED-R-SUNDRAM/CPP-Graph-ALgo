@@ -11,7 +11,7 @@ bool isvalid(int a , int b){
         return false;
     }
 
-    else if (val[a][b]==0 && vis[a][b]==1)
+    else if (val[a][b]==0 || vis[a][b]==1)
     {
         return false;
     }

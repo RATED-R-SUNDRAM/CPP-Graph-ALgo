@@ -38,7 +38,7 @@ int main() {
         g[b].push_back(a);
     }
     dfs(s,0);
-    dis[s]=0;
+  
     for (int i = 1; i <=n; i++)
     {
         cout<<dis[i]<<"  ";

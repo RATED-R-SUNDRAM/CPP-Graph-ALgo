@@ -18,7 +18,7 @@ void dfs(int node,int par){
     {
         // if parent do nothing
         if (elm==par)
-        {
+        {                                                                                                                                                           
             continue;
         }
         
@@ -76,10 +76,19 @@ int main() {
         g[b].push_back(a);
     }
     
-    dfs(3,-1);
-    cout<<childs[3];
+    dfs(1,-1);
+    for (int i = 0; i <=n; i++)
+    {
+        cout<<in[i]<<" ";
+    }
+    cout<<"\n";
+    for (int i = 0; i <=n; i++)
+    {
+        cout<<low[i]<<" ";
+    }
+    cout<<"\n";
     for (auto i = v.begin(); i != v.end(); ++i) 
-        cout << *i << " ";
+        cout << *i << " ,";
     
 
     
